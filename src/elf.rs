@@ -29,8 +29,11 @@ pub struct ElfHeader {
 
 pub fn parse(path: &str) {
     let contents: Vec<u8> = std::fs::read(&path).expect("failed to read the file");
-    /*if contents[0..4] != [0x7f, 0x45, 0x4c, 0x46] {
+    if contents[0..4] != [0x7f, 0x45, 0x4c, 0x46] {
         panic!("it is not an ELF");
-    }*/
-    println!("{}", contents[0x4]);
+    }
+    for i in (0x0..0x4) {
+        println!("{:#x}", &contents[i]);
+    }
+    println!("{:#x}", contents[0x4]);
 }
