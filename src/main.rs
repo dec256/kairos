@@ -1,3 +1,5 @@
+use crate::elf::Elf;
+
 mod elf;
 fn main() {
     let args: Vec<String> = std::env::args().collect();
@@ -5,5 +7,5 @@ fn main() {
         panic!("we require 2 args -> ./kairos <path>");
     }
     let path = &args[0] as &str;
-    elf::parse(&path);
+    let elf = Elf::parse(&path).expect("failure in parse");
 }
